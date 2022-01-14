@@ -1,0 +1,46 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-var": 2, // 禁止用es5的var
+    "prefer-const": 2, // 能用const就用const
+    "no-use-before-define": 0, //用之前先定义
+    "comma-dangle": [2, "always-multiline"],
+    "no-console": 1, // 警告没有cnsole.log
+    "no-debugger": 1,
+    "no-alert": 1,
+    "no-empty": 2, //不允许有空块语句
+    "no-extra-semi": 2, //不需要多余的";"符号
+    "no-obj-calls": 2, // 不允许调用Math，JSON和Reflect对象作为功能。
+    "default-case": 2, //明确default下输出
+    "eqeqeq": 2, //  要求执行运算符比较时 带类型判断更严谨
+    "no-duplicate-imports": 2, // 合并同一包下引入的内容
+    "no-else-return": 2, // 如果一个if块包含一个return语句，else块就变得不必要了。它的内容可以放在块的外面
+    "no-fallthrough": 2, // 减少switch 流入后边的逻辑中
+    "no-lone-blocks": 2, //减少无用的花括号
+    "indent": [
+      2,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ], // 样式 二格缩进
+    "object-curly-spacing": [2, "always"], // 花括号中间预留空白 保证代码美观
+    "quotes": [
+      2,
+      "single",
+      "avoid-escape" // 字符串单引号
+    ],
+    "no-multiple-empty-lines": [
+      2,
+      {
+        //禁止太多无用行
+        "max": 2
+      }
+    ],
+    "no-unused-vars": [2, {       // 本地未使用变量 剔除
+      "vars": "local",
+      "args": "after-used",
+      "argsIgnorePattern": "^_"
+    }]
+  }
+}

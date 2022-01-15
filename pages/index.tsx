@@ -3,18 +3,30 @@
  * @Autor: 24
  * @Date: 2021-12-27 17:58:58
  * @LastEditors: 24
- * @LastEditTime: 2022-01-14 18:01:56
+ * @LastEditTime: 2022-01-15 14:00:48
  * 
 //  /about
  */
 import { NextPage } from 'next';
-import Head from 'next/head'
-import { Button } from 'antd'; 
+import Head from 'next/head';
+import { Button } from 'antd';
+import {  useEffect } from 'react';
 import styles from './Home.module.less';
+
+import { defaultApi } from '../server/defaultApi';
 
 
 // req, res
 const Home: NextPage = ({ stars }) => {
+
+  useEffect(() => {
+    getData();
+  },[])
+
+  const getData = async () => {
+    const res = await defaultApi();
+    console.log('页面res--------->', res)
+  }
   return (
     <div className={styles.container}>
       <Head>

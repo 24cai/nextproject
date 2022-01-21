@@ -3,7 +3,7 @@
  * @Autor: 24
  * @Date: 2022-01-15 09:38:43
  * @LastEditors: 24
- * @LastEditTime: 2022-01-15 14:14:06
+ * @LastEditTime: 2022-01-21 17:58:05
  */
 import { message } from 'antd';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -15,6 +15,10 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 export type typeResponseCode = '101' | '102' | '103';
 
 type RequestMethod = 'get' | 'post';
+
+type StringObj = {
+  [k: string]: any;
+}
 
 export interface RequesetConfig extends AxiosRequestConfig {
   token?: string | null,
@@ -37,7 +41,7 @@ const config: RequesetConfig = {
     'Content-Type': 'application/json; charset=utf-8',
   },
   timeout,
-} 
+}
 
 const request = axios.create(config);
 
@@ -51,13 +55,17 @@ request.interceptors.request.use((config: RequesetConfig) => {
   return Promise.reject(error);
 })
 
-const resList = {
+const resList: StringObj = {
 };
 request.interceptors.response.use((response: ResponseData) => {
-  resList[response.config.url] = response.data;
+  let url: string = response.config.url || '';
+  if (url) {
+    resList[url] = response.data;
+  }
+
   return Promise.resolve(resList);
-},(error) => {
-  if(axios.isCancel(error)) return;
+}, (error) => {
+  if (axios.isCancel(error)) return;
   if (error.message === 'Network Error') {
     message.error('服务器错误');
     return;
@@ -73,7 +81,7 @@ request.interceptors.response.use((response: ResponseData) => {
 })
 
 const reqFunc = (
-  method:RequestMethod,
+  method: RequestMethod,
   path: string,
   data?: any
 ) => {
@@ -91,7 +99,7 @@ const get = (path: string) => {
     Object.defineProperty(resList, path, {
       configurable: true,
       enumerable: true,
-      set: function(obj) {
+      set: function (obj) {
         resolve(obj);
       },
     });
@@ -104,7 +112,7 @@ const post = (path: string) => {
     Object.defineProperty(resList, path, {
       configurable: true,
       enumerable: true,
-      set: function(obj) {
+      set: function (obj) {
         resolve(obj);
       },
     });

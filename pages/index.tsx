@@ -3,7 +3,7 @@
  * @Autor: 24
  * @Date: 2021-12-27 17:58:58
  * @LastEditors: 24
- * @LastEditTime: 2022-01-15 14:00:48
+ * @LastEditTime: 2022-01-21 17:54:45
  * 
 //  /about
  */
@@ -15,9 +15,8 @@ import styles from './Home.module.less';
 
 import { defaultApi } from '../server/defaultApi';
 
-
 // req, res
-const Home: NextPage = ({ stars }) => {
+const Home: NextPage  = () => {
 
   useEffect(() => {
     getData();
@@ -36,7 +35,7 @@ const Home: NextPage = ({ stars }) => {
       </Head>
       <Button type='primary'>12121</Button>
       <main className={styles.main}>
-        {stars}
+      
       </main>
     </div>
   )

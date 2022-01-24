@@ -3,10 +3,10 @@
  * @Autor: 24
  * @Date: 2022-01-18 09:48:39
  * @LastEditors: 24
- * @LastEditTime: 2022-01-18 12:48:06
+ * @LastEditTime: 2022-01-24 17:23:36
  */
 import React, { FC } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Row, Col } from 'antd';
 
 const { Header, Footer, Content } = Layout;
 
@@ -22,7 +22,16 @@ const DefaultLayout:FC<Props> = ({ children }) => {
       <Header>
       </Header>
       <Layout>
-        <Content>{children}</Content>
+        <Content>
+          <Row gutter={16}>
+            <Col xs={24} sm={24} md={18}>
+              {children}
+            </Col>
+            <Col xs={0} sm={0} md={6}>
+              侧边
+            </Col>
+          </Row>
+        </Content>
       </Layout>
       <Footer>Footer</Footer>
     </Layout>

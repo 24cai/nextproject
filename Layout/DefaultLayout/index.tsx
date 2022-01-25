@@ -3,7 +3,7 @@
  * @Autor: 24
  * @Date: 2022-01-18 09:48:39
  * @LastEditors: 24
- * @LastEditTime: 2022-01-24 17:23:36
+ * @LastEditTime: 2022-01-25 15:15:48
  */
 import React, { FC } from 'react';
 import { Layout, Row, Col } from 'antd';
@@ -22,7 +22,7 @@ const DefaultLayout:FC<Props> = ({ children }) => {
       <Header>
       </Header>
       <Layout>
-        <Content>
+        <Content className={styles.layoutContiner}>
           <Row gutter={16}>
             <Col xs={24} sm={24} md={18}>
               {children}
